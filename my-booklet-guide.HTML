@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Guide to Creating a Professional Booklet in Microsoft Word</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chosen Palette: Teal and Gray -->
+    <!-- Application Structure Plan: The application is structured into a multi-tab interface (Setup, Content, Printing, Troubleshooting, Assembly) to break the linear guide into logical, manageable sections. This allows users to directly access the information they need without scrolling through irrelevant steps. The key interactions include an interactive gutter size calculator to provide immediate, personalized recommendations, and an OS toggle in the printing section to reduce cognitive load by displaying only the relevant Windows or macOS instructions. This user-centric design transforms a static document into a functional, interactive tool. -->
+    <!-- Visualization & Content Choices: The guide's content is presented through a mix of methods. The Gutter Size table is converted into an interactive JS calculator for user engagement. The platform-specific printing instructions are handled by a JS-powered toggle, which is more user-friendly than displaying both sets of instructions simultaneously. The troubleshooting section uses native HTML <details> tags to create an accordion, keeping the UI clean and scannable. These choices prioritize clarity, interactivity, and ease of use over the original document's static format, all achieved without SVG or Mermaid JS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* gray-100 */
+        }
+        .tab {
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            color: #4b5563; /* gray-600 */
+        }
+        .tab.active {
+            color: #0d9488; /* teal-600 */
+            border-color: #0d9488; /* teal-600 */
+            font-weight: 600;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .os-toggle {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db; /* gray-300 */
+            border-radius: 0.375rem;
+            transition: all 0.2s ease;
+        }
+        .os-toggle.active {
+            background-color: #0d9488; /* teal-600 */
+            color: #ffffff;
+            border-color: #0d9488;
+        }
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .arrow-down {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">A Guide to Creating a Professional Booklet in MS Word</h1>
+            <p class="text-gray-600">An interactive guide for setting up, designing, and printing your booklet on Windows and macOS.</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-lg">
+            <!-- Tabs Navigation -->
+            <nav class="border-b border-gray-200 flex flex-wrap justify-center">
+                <div id="tab-setup" class="tab active">
+                    <i data-lucide="settings-2" class="inline-block w-4 h-4 mr-1"></i> Setup
+                </div>
+                <div id="tab-content" class="tab">
+                    <i data-lucide="file-text" class="inline-block w-4 h-4 mr-1"></i> Content
+                </div>
+                <div id="tab-printing" class="tab">
+                    <i data-lucide="printer" class="inline-block w-4 h-4 mr-1"></i> Printing
+                </div>
+                <div id="tab-troubleshooting" class="tab">
+                    <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1"></i> Troubleshooting
+                </div>
+                <div id="tab-assembly" class="tab">
+                    <i data-lucide="book-check" class="inline-block w-4 h-4 mr-1"></i> Assembly
+                </div>
+            </nav>
+
+            <!-- Tab Content Panels -->
+            <div class="p-6 md:p-8">
+                <!-- Setup Panel -->
+                <section id="panel-setup" class="tab-content active">
+                    <h2 class="text-2xl font-bold mb-4">I. Initial Document Setup: The Foundation</h2>
+                    <p class="text-gray-600 mb-6">This is the most critical phase. Getting the setup right from the start will save you significant time and prevent formatting issues later. Follow these steps in order to properly configure your document for booklet printing.</p>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">A. Switch to Booklet Layout ("Book fold")</h3>
+                            <p class="mb-2"><strong class="font-semibold text-gray-900">On Windows:</strong> Navigate to the `Layout` tab, click the small arrow in the corner of the `Page Setup` group.</p>
+                            <p class="mb-2"><strong class="font-semibold text-gray-900">On macOS:</strong> Click `File` in the menu bar, then select `Page Setup`.</p>
+                            <p>In the dialog, find `Multiple pages` and select **Book fold**. The orientation will automatically become *Landscape*, and margins will change to *Inside/Outside*.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">B. Set Your Paper Size</h3>
+                            <p>In the `Page Setup` dialog box, go to the `Paper` tab. Select the paper size you will print on. Remember, this should be twice the size of your final booklet pages (e.g., use **Letter** paper for a 5.5" x 8.5" booklet).</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">C. Establish Your Margins</h3>
+                            <p class="mb-4">Return to the `Margins` tab to set your page margins. A good starting point is to have symmetrical margins for a clean look. See the table below for recommendations.</p>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Margin Type
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Recommended Size
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Top</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5" to 0.75"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Bottom</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5" to 0.75"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Inside</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5" to 0.75" (before adding gutter)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Outside</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5" to 0.75"</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                         <div>
+                            <h3 class="text-lg font-semibold mb-2">D. Configure the Crucial Gutter Margin</h3>
+                            <p class="text-gray-600 mb-4">The gutter adds space to the inside margin for the binding. Thicker booklets need a larger gutter. Use the calculator below to find your recommended size.</p>
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <label for="pageCountInput" class="block text-sm font-medium text-gray-700 mb-1">Enter Your Total Page Count:</label>
+                                <div class="flex items-center space-x-2">
+                                    <input type="number" id="pageCountInput" class="block w-full md:w-1/3 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="e.g., 200">
+                                    <button id="calculateGutter" class="px-4 py-2 bg-teal-600 text-white font-semibold rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">Calculate</button>
+                                </div>
+                                <p id="gutterResult" class="mt-3 text-gray-900 font-semibold"></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content Panel -->
+                <section id="panel-content" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4">II. Structuring and Formatting Your Content</h2>
+                    <p class="text-gray-600 mb-6">With your document correctly set up, you can now focus on the content. Consistent formatting and proper structure are key to a professional-looking booklet.</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">A. Plan for a Page Count in Multiples of Four</h3>
+                            <p>Because one sheet of paper folded in half creates four booklet pages, your total page count **must be a multiple of 4**. If your content doesn't naturally fit (e.g., you have 21 pages), add blank pages at the end to reach the next multiple (e.g., 24).</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">B. Add Page Numbers and Headers/Footers</h3>
+                            <p>Go to the `Insert` tab and select `Page Number`. For a professional look, set up different headers/footers for odd and even pages to place page numbers on the outer corners. Enable this by checking **Different Odd & Even Pages** in the `Header & Footer` contextual tab.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">C. Use Styles for Consistency</h3>
+                            <p>Use the **Styles** pane (`Home` tab) for all formatting (e.g., `Heading 1`, `Normal`). This allows you to update fonts or sizes globally by simply modifying the style, ensuring consistency throughout your document.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Printing Panel -->
+                <section id="panel-printing" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4">III. Final Review and Printing</h2>
+                    <p class="text-gray-600 mb-6">Before you commit to printing, a final review and a test print are essential to catch any errors and save paper. This section guides you through the final steps for a perfect print.</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">A. Proofread and Preview</h3>
+                            <p class="mb-4">Go to `File > Print` to see the "printer spreads" (e.g., page 24 next to page 1). For the most accurate view, save a copy as a PDF. On macOS, the **"Open in Preview"** option from the print dialog is highly recommended for its accuracy.</p>
+                            <div class="my-4 overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+                                <img src="https://placehold.co/600x320/ccfbf1/134e4a?text=Print+Preview+(e.g.,+Page+24+next+to+Page+1)" alt="Microsoft Word print preview screen for a booklet" class="w-full h-auto object-cover">
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">B. Configure Printer Settings for Epson ET-15000</h3>
+                            <div class="flex space-x-2 mb-4">
+                                <button id="toggle-windows" class="os-toggle active">Windows</button>
+                                <button id="toggle-macos" class="os-toggle">macOS</button>
+                            </div>
+                            <div id="instructions-windows" class="os-instructions">
+                                <ol class="list-decimal list-inside space-y-2">
+                                    <li>Go to `File > Print` and select your **Epson ET-15000**.</li>
+                                    <li>Click **Printer Properties**.</li>
+                                    <li>On the **Main** tab, find the **2-Sided Printing** option.</li>
+                                    <li>Select the **Booklet** setting.</li>
+                                    <li>Ensure the binding is set to **Short-Edge Binding**. This is critical.</li>
+                                    <li>Click **OK**.</li>
+                                </ol>
+                            </div>
+                            <div id="instructions-macos" class="os-instructions" style="display: none;">
+                                <ol class="list-decimal list-inside space-y-2">
+                                    <li>Go to `File > Print` and select your **Epson ET-15000**.</li>
+                                    <li>Below the Orientation settings, find the dropdown menu (often says `Copies & Pages`).</li>
+                                    <li>Select **Layout**.</li>
+                                    <li>For **Two-Sided**, select **Short-Edge binding**.</li>
+                                    <li>Proceed to print.</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">C. Perform a Test Print</h3>
+                            <p>Before printing the whole document, print just the first sheet. In Windows, type `p1,s1` in the Pages box. On macOS, use the "Open in Preview" method and print only the first page of the PDF. Fold this sheet to confirm that everything is correct.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Troubleshooting Panel -->
+                <section id="panel-troubleshooting" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4">IV. Troubleshooting Common Issues</h2>
+                    <p class="text-gray-600 mb-6">Even with careful setup, you might run into issues. This section covers the most common problems and their solutions.</p>
+                    <div class="space-y-3">
+                        <details class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <summary class="font-semibold text-gray-900 flex justify-between items-center">The back of my pages are printing upside down.<span class="arrow-down transition-transform duration-200"><i data-lucide="chevron-down"></i></span></summary>
+                            <p class="mt-2 text-gray-600">This is the most common issue. You must select **"Flip on short edge"** or **"Short-Edge Binding"** in your printer's properties. "Long-Edge Binding" is for portrait documents and will not work for booklets.</p>
+                        </details>
+                        <details class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <summary class="font-semibold text-gray-900 flex justify-between items-center">My margins are incorrect or look different when printed.<span class="arrow-down transition-transform duration-200"><i data-lucide="chevron-down"></i></span></summary>
+                            <p class="mt-2 text-gray-600">Some printer drivers override Word's settings. Check for options like "Scale to fit paper." Also, confirm you've selected the identical paper size in both Word's Page Setup and your Printer Properties.</p>
+                        </details>
+                        <details class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <summary class="font-semibold text-gray-900 flex justify-between items-center">The page order is completely wrong.<span class="arrow-down transition-transform duration-200"><i data-lucide="chevron-down"></i></span></summary>
+                            <p class="mt-2 text-gray-600">Go back to `Layout > Page Setup` and confirm that **"Book fold"** is still selected. If this setting is changed, Word will not impose the pages correctly.</p>
+                        </details>
+                        <details class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <summary class="font-semibold text-gray-900 flex justify-between items-center">I have extra blank pages at the end.<span class="arrow-down transition-transform duration-200"><i data-lucide="chevron-down"></i></span></summary>
+                            <p class="mt-2 text-gray-600">This is expected if your page count isn't a multiple of 4. Word automatically adds blank pages to complete the final sheet for printing.</p>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- Assembly Panel -->
+                <section id="panel-assembly" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4">V. After Printing: Assembling and Binding Your Booklet</h2>
+                    <p class="text-gray-600 mb-6">The final step is to turn your printed sheets into a finished booklet. Proper folding and binding will give your project a professional touch.</p>
+                     <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">A. Collate and Fold</h3>
+                            <p>Stack the printed sheets in the order they came out of the printer. Carefully fold the entire stack in half. For a crisp fold, press along the crease with a bone folder or the edge of a ruler.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">B. Bind the Spine (Saddle Stitching)</h3>
+                            <p>Saddle stitching is the standard method, which means stapling along the center fold. Open the booklet and lay it flat, cover facing down. Use a **long-reach stapler** to place two or three staples along the fold.</p>
+                             <div class="my-4 overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+                                <img src="https://placehold.co/500x350/ccfbf1/134e4a?text=Saddle+Stitching+with+a+Long-Reach+Stapler" alt="A long-reach stapler binding a booklet" class="w-full h-auto object-cover">
+                            </div>
+                            <p class="mt-2 text-sm text-gray-600">**No long-reach stapler?** Open a regular stapler flat. Place the booklet spine over a block of foam or an eraser. Press to push the staple through, then manually fold the staple legs flat.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const tabs = document.querySelectorAll('.tab');
+        const panels = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetPanelId = tab.id.replace('tab-', 'panel-');
+
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                panels.forEach(panel => {
+                    if (panel.id === targetPanelId) {
+                        panel.classList.add('active');
+                    } else {
+                        panel.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        const calculateGutterBtn = document.getElementById('calculateGutter');
+        const pageCountInput = document.getElementById('pageCountInput');
+        const gutterResult = document.getElementById('gutterResult');
+
+        calculateGutterBtn.addEventListener('click', () => {
+            const pageCount = parseInt(pageCountInput.value);
+            let gutterSize = 'Please enter a valid page count.';
+            
+            if (pageCount > 0 && pageCount <= 150) {
+                gutterSize = '0.375” (9.6 mm)';
+            } else if (pageCount > 150 && pageCount <= 300) {
+                gutterSize = '0.5” (12.7 mm)';
+            } else if (pageCount > 300 && pageCount <= 500) {
+                gutterSize = '0.625” (15.9 mm)';
+            } else if (pageCount > 500) {
+                gutterSize = '0.75” (19.1 mm)';
+            }
+            
+            gutterResult.textContent = `Recommended Gutter Size: ${gutterSize}`;
+        });
+
+        const toggleWindows = document.getElementById('toggle-windows');
+        const toggleMacos = document.getElementById('toggle-macos');
+        const instructionsWindows = document.getElementById('instructions-windows');
+        const instructionsMacos = document.getElementById('instructions-macos');
+
+        toggleWindows.addEventListener('click', () => {
+            toggleWindows.classList.add('active');
+            toggleMacos.classList.remove('active');
+            instructionsWindows.style.display = 'block';
+            instructionsMacos.style.display = 'none';
+        });
+
+        toggleMacos.addEventListener('click', () => {
+            toggleMacos.classList.add('active');
+            toggleWindows.classList.remove('active');
+            instructionsMacos.style.display = 'block';
+            instructionsWindows.style.display = 'none';
+        });
+
+    </script>
+</body>
+</html>
+
+
