@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Guide to Creating a Professional Booklet in Microsoft Word</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            color: #4b5563;
+        }
+        .tab.active {
+            color: #0d9488;
+            border-color: #0d9488;
+            font-weight: 600;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .os-toggle {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease;
+        }
+        .os-toggle.active {
+            background-color: #0d9488;
+            color: #ffffff;
+            border-color: #0d9488;
+        }
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .arrow-down {
+            transform: rotate(180deg);
+        }
+        .img-caption {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+            text-align: center;
+        }
+        .os-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .os-images .os-block {
+            flex: 1 1 280px;
+            min-width: 250px;
+            max-width: 340px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">A Guide to Creating a Professional Booklet in MS Word</h1>
+            <p class="text-gray-600">An interactive guide for setting up, designing, and printing your booklet on Windows and macOS.</p>
+        </header>
+
+        <div class="bg-white rounded-lg shadow-lg">
+            <!-- Tabs Navigation -->
+            <nav class="border-b border-gray-200 flex flex-wrap justify-center">
+                <div id="tab-setup" class="tab active">
+                    <i data-lucide="settings-2" class="inline-block w-4 h-4 mr-1"></i> Setup
+                </div>
+                <div id="tab-content" class="tab">
+                    <i data-lucide="file-text" class="inline-block w-4 h-4 mr-1"></i> Content
+                </div>
+                <div id="tab-printing" class="tab">
+                    <i data-lucide="printer" class="inline-block w-4 h-4 mr-1"></i> Printing
+                </div>
+                <div id="tab-troubleshooting" class="tab">
+                    <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1"></i> Troubleshooting
+                </div>
+                <div id="tab-assembly" class="tab">
+                    <i data-lucide="book-check" class="inline-block w-4 h-4 mr-1"></i> Assembly
+                </div>
+                <div id="tab-links" class="tab">
+                    <i data-lucide="link" class="inline-block w-4 h-4 mr-1"></i> Links
+                </div>
+            </nav>
+
+            <div class="p-6 md:p-8">
+                <!-- Setup Panel -->
+                <section id="panel-setup" class="tab-content active">
+                    <h2 class="text-2xl font-bold mb-4">I. Initial Document Setup: The Foundation</h2>
+                    <p class="text-gray-600 mb-6">Getting the setup right from the start will save you significant time and prevent formatting issues later. Follow the steps below for Windows and Mac.</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">A. Switch to Booklet Layout ("Book fold")</h3>
+                            <div class="os-images">
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Windows:</strong>
+                                    <p>Layout tab &rarr; Page Setup &rarr; Multiple pages: Book fold.</p>
+                                    <img src="https://www.wikihow.com/images/thumb/3/37/Make-a-Booklet-in-Word-Step-5.jpg/v4-728px-Make-a-Booklet-in-Word-Step-5.jpg" alt="Windows - Book Fold" class="w-full h-auto rounded">
+                                    <div class="img-caption">Book Fold setup (Windows). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Windows.29" target="_blank">WikiHow</a></div>
+                                </div>
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Mac:</strong>
+                                    <p>File &rarr; Page Setup &rarr; Paper Size &rarr; Manage Custom Sizes.</p>
+                                    <img src="https://www.wikihow.com/images/thumb/4/48/Make-a-Booklet-in-Word-Step-19.jpg/v4-728px-Make-a-Booklet-in-Word-Step-19.jpg" alt="Mac - Page Setup" class="w-full h-auto rounded">
+                                    <div class="img-caption">Page Setup (Mac). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Mac.29" target="_blank">WikiHow</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">B. Set Your Paper Size</h3>
+                            <div class="os-images">
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Windows:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/0/01/Make-a-Booklet-in-Word-Step-6.jpg/v4-728px-Make-a-Booklet-in-Word-Step-6.jpg" alt="Windows - Paper Size" class="w-full h-auto rounded">
+                                    <div class="img-caption">Choose Paper Size (Windows). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Windows.29" target="_blank">WikiHow</a></div>
+                                </div>
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Mac:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/7/7b/Make-a-Booklet-in-Word-Step-20.jpg/v4-728px-Make-a-Booklet-in-Word-Step-20.jpg" alt="Mac - Custom Paper Size" class="w-full h-auto rounded">
+                                    <div class="img-caption">Custom Paper Size (Mac). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Mac.29" target="_blank">WikiHow</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">C. Establish Your Margins</h3>
+                            <div class="os-images">
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Windows:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/5/5f/Make-a-Booklet-in-Word-Step-7.jpg/v4-728px-Make-a-Booklet-in-Word-Step-7.jpg" alt="Windows - Margins" class="w-full h-auto rounded">
+                                    <div class="img-caption">Set Margins (Windows). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Windows.29" target="_blank">WikiHow</a></div>
+                                </div>
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Mac:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/9/95/Make-a-Booklet-in-Word-Step-21.jpg/v4-728px-Make-a-Booklet-in-Word-Step-21.jpg" alt="Mac - Margins" class="w-full h-auto rounded">
+                                    <div class="img-caption">Set Margins (Mac). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Mac.29" target="_blank">WikiHow</a></div>
+                                </div>
+                            </div>
+                            <div class="overflow-x-auto mb-4">
+                                <!-- Margin Table remains unchanged -->
+                                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Margin Type
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Recommended Size
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Top</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5" to 0.75"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Bottom</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5" to 0.75"</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Inside</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5" to 0.75" (before adding gutter)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Outside</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5" to 0.75"</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">D. Configure the Crucial Gutter Margin</h3>
+                            <p class="text-gray-600 mb-4">The gutter adds space to the inside margin for the binding. Thicker booklets need a larger gutter. Use the calculator below to find your recommended size.</p>
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <label for="pageCountInput" class="block text-sm font-medium text-gray-700 mb-1">Enter Your Total Page Count:</label>
+                                <div class="flex items-center space-x-2">
+                                    <input type="number" id="pageCountInput" class="block w-full md:w-1/3 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500" placeholder="e.g. 24">
+                                    <button id="calculateGutter" class="px-4 py-2 bg-teal-600 text-white font-semibold rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">Calculate</button>
+                                </div>
+                                <p id="gutterResult" class="mt-3 text-gray-900 font-semibold"></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content Panel -->
+                <section id="panel-content" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4">II. Structuring and Formatting Your Content</h2>
+                    <p class="text-gray-600 mb-6">With your document correctly set up, you can now focus on the content. Consistent formatting and proper structure are key to a professional-looking booklet.</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">A. Plan for a Page Count in Multiples of Four</h3>
+                            <div class="os-images">
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Windows:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/e/e0/Make-a-Booklet-in-Word-Step-8.jpg/v4-728px-Make-a-Booklet-in-Word-Step-8.jpg" alt="Windows - Booklet Layout Preview" class="w-full h-auto rounded">
+                                    <div class="img-caption">Booklet Layout Preview (Windows). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Windows.29" target="_blank">WikiHow</a></div>
+                                </div>
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Mac:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/6/6e/Make-a-Booklet-in-Word-Step-22.jpg/v4-728px-Make-a-Booklet-in-Word-Step-22.jpg" alt="Mac - Booklet Layout Preview" class="w-full h-auto rounded">
+                                    <div class="img-caption">Booklet Layout Preview (Mac). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Mac.29" target="_blank">WikiHow</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">B. Add Page Numbers and Headers/Footers</h3>
+                            <div class="os-images">
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Windows:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/1/1e/Make-a-Booklet-in-Word-Step-9.jpg/v4-728px-Make-a-Booklet-in-Word-Step-9.jpg" alt="Windows - Page Numbers" class="w-full h-auto rounded">
+                                    <div class="img-caption">Insert Page Numbers (Windows). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Windows.29" target="_blank">WikiHow</a></div>
+                                </div>
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Mac:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/c/c8/Make-a-Booklet-in-Word-Step-23.jpg/v4-728px-Make-a-Booklet-in-Word-Step-23.jpg" alt="Mac - Page Numbers" class="w-full h-auto rounded">
+                                    <div class="img-caption">Insert Page Numbers (Mac). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Mac.29" target="_blank">WikiHow</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">C. Use Styles for Consistency</h3>
+                            <p>Use the <strong>Styles</strong> pane (`Home` tab) for all formatting. This allows you to update fonts or sizes globally by simply modifying the style, ensuring consistency throughout your booklet.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Printing Panel -->
+                <section id="panel-printing" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4">III. Final Review and Printing</h2>
+                    <p class="text-gray-600 mb-6">Before you commit to printing, a final review and a test print are essential to catch any errors and save paper.</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">A. Proofread and Preview</h3>
+                            <div class="os-images">
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Windows:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/0/0c/Make-a-Booklet-in-Word-Step-10.jpg/v4-728px-Make-a-Booklet-in-Word-Step-10.jpg" alt="Windows - Print Preview" class="w-full h-auto rounded">
+                                    <div class="img-caption">Print Preview (Windows). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Windows.29" target="_blank">WikiHow</a></div>
+                                </div>
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Mac:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/0/0a/Make-a-Booklet-in-Word-Step-24.jpg/v4-728px-Make-a-Booklet-in-Word-Step-24.jpg" alt="Mac - Print Preview" class="w-full h-auto rounded">
+                                    <div class="img-caption">Print Preview (Mac). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Mac.29" target="_blank">WikiHow</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">B. Configure Printer Settings for Epson ET-15000</h3>
+                            <div class="flex space-x-2 mb-4">
+                                <button id="toggle-windows" class="os-toggle active">Windows</button>
+                                <button id="toggle-macos" class="os-toggle">macOS</button>
+                            </div>
+                            <div id="instructions-windows" class="os-instructions">
+                                <ol class="list-decimal list-inside space-y-2">
+                                    <li>Go to `File > Print` and select your <strong>Epson ET-15000</strong>.</li>
+                                    <li>Click <strong>Printer Properties</strong>.</li>
+                                    <li>On the <strong>Main</strong> tab, find the <strong>2-Sided Printing</strong> option.</li>
+                                    <li>Select the <strong>Booklet</strong> setting.</li>
+                                    <li>Ensure the binding is set to <strong>Short-Edge Binding</strong>. This is critical.</li>
+                                    <li>Click <strong>OK</strong>.</li>
+                                </ol>
+                            </div>
+                            <div id="instructions-macos" class="os-instructions" style="display: none;">
+                                <ol class="list-decimal list-inside space-y-2">
+                                    <li>Go to `File > Print` and select your <strong>Epson ET-15000</strong>.</li>
+                                    <li>Below the Orientation settings, find the dropdown menu (often says `Copies & Pages`).</li>
+                                    <li>Select <strong>Layout</strong>.</li>
+                                    <li>For <strong>Two-Sided</strong>, select <strong>Short-Edge binding</strong>.</li>
+                                    <li>Proceed to print.</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">C. Perform a Test Print</h3>
+                            <p>Before printing the whole document, print just the first sheet. In Windows, type `p1,s1` in the Pages box. On macOS, use the "Open in Preview" method and print only the first sheet.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Troubleshooting Panel -->
+                <section id="panel-troubleshooting" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4">IV. Troubleshooting Common Issues</h2>
+                    <p class="text-gray-600 mb-6">Even with careful setup, you might run into issues. This section covers the most common problems and their solutions.</p>
+                    <div class="space-y-3">
+                        <details class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <summary class="font-semibold text-gray-900 flex justify-between items-center">The back of my pages are printing upside down.<span class="arrow-down transition-transform duration-200 ml-2">&#x25BC;</span></summary>
+                            <p class="mt-2 text-gray-600">This is the most common issue. You must select <strong>"Flip on short edge"</strong> or <strong>"Short-Edge Binding"</strong> in your printer's properties. "Long-Edge Binding" will print the backs upside down.</p>
+                        </details>
+                        <details class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <summary class="font-semibold text-gray-900 flex justify-between items-center">My margins are incorrect or look different when printed.<span class="arrow-down transition-transform duration-200 ml-2">&#x25BC;</span></summary>
+                            <p class="mt-2 text-gray-600">Some printer drivers override Word's settings. Check for options like "Scale to fit paper." Also, confirm you've selected the identical paper size in Word and in your printer properties.</p>
+                        </details>
+                        <details class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <summary class="font-semibold text-gray-900 flex justify-between items-center">The page order is completely wrong.<span class="arrow-down transition-transform duration-200 ml-2">&#x25BC;</span></summary>
+                            <p class="mt-2 text-gray-600">Go back to <code>Layout &gt; Page Setup</code> and confirm that <strong>"Book fold"</strong> is still selected. If this setting is changed, Word will not impose the pages correctly for booklet printing.</p>
+                        </details>
+                        <details class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <summary class="font-semibold text-gray-900 flex justify-between items-center">I have extra blank pages at the end.<span class="arrow-down transition-transform duration-200 ml-2">&#x25BC;</span></summary>
+                            <p class="mt-2 text-gray-600">This is expected if your page count isn't a multiple of 4. Word automatically adds blank pages to complete the final sheet for printing.</p>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- Assembly Panel -->
+                <section id="panel-assembly" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4">V. After Printing: Assembling and Binding Your Booklet</h2>
+                    <p class="text-gray-600 mb-6">The final step is to turn your printed sheets into a finished booklet. Proper folding and binding will give your project a professional touch.</p>
+                     <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">A. Collate and Fold</h3>
+                            <div class="os-images">
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Windows:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/2/2f/Make-a-Booklet-in-Word-Step-11.jpg/v4-728px-Make-a-Booklet-in-Word-Step-11.jpg" alt="Windows - Fold Sheets" class="w-full h-auto rounded">
+                                    <div class="img-caption">Folding Booklet Sheets (Windows). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Windows.29" target="_blank">WikiHow</a></div>
+                                </div>
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Mac:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/c/c2/Make-a-Booklet-in-Word-Step-25.jpg/v4-728px-Make-a-Booklet-in-Word-Step-25.jpg" alt="Mac - Fold Sheets" class="w-full h-auto rounded">
+                                    <div class="img-caption">Folding Booklet Sheets (Mac). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Mac.29" target="_blank">WikiHow</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">B. Bind the Spine (Saddle Stitching)</h3>
+                            <div class="os-images">
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Windows:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/2/2f/Make-a-Booklet-in-Word-Step-12.jpg/v4-728px-Make-a-Booklet-in-Word-Step-12.jpg" alt="Windows - Staple Booklet" class="w-full h-auto rounded">
+                                    <div class="img-caption">Staple Booklet (Windows). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Windows.29" target="_blank">WikiHow</a></div>
+                                </div>
+                                <div class="os-block">
+                                    <strong class="font-semibold text-gray-900">Mac:</strong>
+                                    <img src="https://www.wikihow.com/images/thumb/7/7e/Make-a-Booklet-in-Word-Step-26.jpg/v4-728px-Make-a-Booklet-in-Word-Step-26.jpg" alt="Mac - Staple Booklet" class="w-full h-auto rounded">
+                                    <div class="img-caption">Staple Booklet (Mac). <a href="https://www.wikihow.com/Make-a-Booklet-in-Word#Formatting-a-Booklet-Manually-.28Mac.29" target="_blank">WikiHow</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="mt-2 text-sm text-gray-600"><strong>No long-reach stapler?</strong> Open a regular stapler flat. Place the booklet spine over a block of foam or an eraser. Press to push the staple through, then fold the prongs inward.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Links Panel -->
+                <section id="panel-links" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-4">Useful Links & Resources</h2>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>
+                            <a href="https://files.support.epson.com/docid/cpl150/cpl15000.pdf" target="_blank" class="text-teal-700 hover:underline font-semibold flex items-center">
+                                <i data-lucide="printer" class="inline-block w-4 h-4 mr-2"></i>
+                                Epson ET-15000 Printer User Guide (PDF)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://support.microsoft.com/en-us/office/create-a-booklet-using-word-0a1c7b0a-06d1-4b4a-8e5e-66e3d8a1e9f2" target="_blank" class="text-teal-700 hover:underline font-semibold flex items-center">
+                                <i data-lucide="book-open" class="inline-block w-4 h-4 mr-2"></i>
+                                Microsoft Word: Create a Booklet Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.wikihow.com/Make-a-Booklet-in-Word" target="_blank" class="text-teal-700 hover:underline font-semibold flex items-center">
+                                <i data-lucide="external-link" class="inline-block w-4 h-4 mr-2"></i>
+                                How to Make a Booklet in Word (WikiHow)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=FJr3K0nQdHw" target="_blank" class="text-teal-700 hover:underline font-semibold flex items-center">
+                                <i data-lucide="youtube" class="inline-block w-4 h-4 mr-2"></i>
+                                Video: How to Print a Booklet in Word
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const tabs = document.querySelectorAll('.tab');
+        const panels = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetPanelId = tab.id.replace('tab-', 'panel-');
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                panels.forEach(panel => {
+                    if (panel.id === targetPanelId) {
+                        panel.classList.add('active');
+                    } else {
+                        panel.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Existing script for gutter calculator and OS toggle
+        const calculateGutterBtn = document.getElementById('calculateGutter');
+        const pageCountInput = document.getElementById('pageCountInput');
+        const gutterResult = document.getElementById('gutterResult');
+        if (calculateGutterBtn && pageCountInput && gutterResult) {
+            calculateGutterBtn.addEventListener('click', () => {
+                const pageCount = parseInt(pageCountInput.value);
+                let gutterSize = 'Please enter a valid page count.';
+                if (pageCount > 0 && pageCount <= 150) {
+                    gutterSize = '0.375” (9.6 mm)';
+                } else if (pageCount > 150 && pageCount <= 300) {
+                    gutterSize = '0.5” (12.7 mm)';
+                } else if (pageCount > 300 && pageCount <= 500) {
+                    gutterSize = '0.625” (15.9 mm)';
+                } else if (pageCount > 500) {
+                    gutterSize = '0.75” (19.1 mm)';
+                }
+                gutterResult.textContent = `Recommended Gutter Size: ${gutterSize}`;
+            });
+        }
+
+        const toggleWindows = document.getElementById('toggle-windows');
+        const toggleMacos = document.getElementById('toggle-macos');
+        const instructionsWindows = document.getElementById('instructions-windows');
+        const instructionsMacos = document.getElementById('instructions-macos');
+
+        if (toggleWindows && toggleMacos && instructionsWindows && instructionsMacos) {
+            toggleWindows.addEventListener('click', () => {
+                toggleWindows.classList.add('active');
+                toggleMacos.classList.remove('active');
+                instructionsWindows.style.display = 'block';
+                instructionsMacos.style.display = 'none';
+            });
+            toggleMacos.addEventListener('click', () => {
+                toggleMacos.classList.add('active');
+                toggleWindows.classList.remove('active');
+                instructionsMacos.style.display = 'block';
+                instructionsWindows.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
